@@ -36,7 +36,6 @@ const secretNumber = Math.trunc(Math.random() * 20) + 1;
 let score = 20;
 
 //(math is an object that has many methods. random gives us a number between 0 and 1)
-document.querySelector('.number').textContent = secretNumber;
 
 document.querySelector('.check').addEventListener('click', function () {
   const guess = Number(document.querySelector('.guess').value);
@@ -53,6 +52,7 @@ document.querySelector('.check').addEventListener('click', function () {
     //MANIPULATING CSS STYLES
     document.querySelector('body').style.backgroundColor = '#60b347';
     document.querySelector('.number').style.width = '30rem';
+    document.querySelector('.number').textContent = secretNumber;
   } //when guess is too high
   else if (guess > secretNumber) {
     if (score > 1) {

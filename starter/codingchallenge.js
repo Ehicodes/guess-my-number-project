@@ -12,18 +12,21 @@ fields
 */
 
 document.querySelector('.again').addEventListener('click', function () {
-  const secretNumber = Math.trunc(Math.random() * 20) + 1;
+  score = 20;
+  secretNumber = Math.trunc(Math.random() * 20) + 1;
   //score
-  const score = 20;
+
   document.querySelector('.score').textContent = score;
   //number
   document.querySelector('.number').textContent = '?';
   //message
-  document.querySelector('.message').textContent = 'Start guessing';
+  document.querySelector('.message').textContent = 'Start guessing...';
   //backgroundColor
   document.querySelector('body').style.backgroundColor = '#222';
   //width
   document.querySelector('.number').style.width = '15rem';
   //guess input
-  document.querySelector('.guess').value = null;
+  document.querySelector('.guess').value = '';
 });
+
+//THE VALUE OF AN INPUT IS ALWAYS A STRING AND THE EMPTY STRING IS BASICALLY THE ABSENCE OF ANY VALUE.

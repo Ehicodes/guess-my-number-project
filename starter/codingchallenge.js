@@ -20,7 +20,8 @@ document.querySelector('.again').addEventListener('click', function () {
   //number
   document.querySelector('.number').textContent = '?';
   //message
-  document.querySelector('.message').textContent = 'Start guessing...';
+  // document.querySelector('.message').textContent = 'Start guessing...';
+  displayMessage('Start guessing...');
   //backgroundColor
   document.querySelector('body').style.backgroundColor = '#222';
   //width

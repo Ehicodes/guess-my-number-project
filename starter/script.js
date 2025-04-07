@@ -35,7 +35,9 @@ console.log(document.querySelector('.guess').value);
 let secretNumber = Math.trunc(Math.random() * 20) + 1;
 let score = 20;
 let highScore = 0;
-
+const displayMessage = function (message) {
+  document.querySelector('.message').textContent = message;
+};
 //(math is an object that has many methods. random gives us a number between 0 and 1)
 
 document.querySelector('.check').addEventListener('click', function () {
@@ -44,12 +46,14 @@ document.querySelector('.check').addEventListener('click', function () {
 
   //when there is no input
   if (!guess) {
-    document.querySelector('.message').textContent = '⛔ No Number';
+    // document.querySelector('.message').textContent = '⛔ No Number';
+    displayMessage('⛔ No Number');
   }
 
   //when player wins
   else if (guess === secretNumber) {
-    document.querySelector('.message').textContent = 'Correct Number 🎉 🎉';
+    // document.querySelector('.message').textContent = 'Correct Number 🎉 🎉';
+    displayMessage('Correct Number 🎉 🎉');
     //MANIPULATING CSS STYLES
     document.querySelector('body').style.backgroundColor = '#60b347';
     document.querySelector('.number').style.width = '30rem';
@@ -60,24 +64,20 @@ document.querySelector('.check').addEventListener('click', function () {
       document.querySelector('.highscore').textContent = highScore;
     }
   } //when guess is too high
-  else if (guess > secretNumber) {
+  else if (guess !== secretNumber) {
     if (score > 1) {
-      document.querySelector('.message').textContent = '📈 Too high!';
+      // document.querySelector('.message').textContent = guess > secretNumber ? '📈 Too high!' : 'Too low 📉';
+      displayMessage(guess > secretNumber ? '📈 Too high!' : 'Too low 📉');
       score = score - 1;
       document.querySelector('.score').textContent = score;
     } else {
-      document.querySelector('.message').textContent = 'You lost the game!💣';
-      document.querySelector('.score').textContent = 0;
-    }
-  } //when guess is too low
-  else if (guess < secretNumber) {
-    if (score > 1) {
-      document.querySelector('.message').textContent = 'Too low 📉';
-      score--;
-      document.querySelector('.score').textContent = score;
-    } else {
-      document.querySelector('.message').textContent = 'You lost the game!💣';
+      // document.querySelector('.message').textContent = 'You lost the game!💣';
+      displayMessage('You lost the game!💣');
       document.querySelector('.score').textContent = 0;
     }
   }
 });
+
+//first step in refactoring code
+//--identify duplicate code
+//--a good refactoring technique is to use functions
